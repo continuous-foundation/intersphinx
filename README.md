@@ -1,8 +1,8 @@
 # intersphinx
 
 [![intersphinx on npm](https://img.shields.io/npm/v/intersphinx.svg)](https://www.npmjs.com/package/intersphinx)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/curvenote/intersphinx/blob/main/LICENSE)
-[![CI](https://github.com/curvenote/intersphinx/workflows/CI/badge.svg)](https://github.com/curvenote/intersphinx/actions)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/continuous-foundation/intersphinx/blob/main/LICENSE)
+[![CI](https://github.com/continuous-foundation/intersphinx/workflows/CI/badge.svg)](https://github.com/continuous-foundation/intersphinx/actions)
 
 Read and write intersphinx `objects.inv` from node or the command line.
 
@@ -70,7 +70,7 @@ As of v1.0.0 this package is [ESM only](https://gist.github.com/sindresorhus/a39
 
 <p style="text-align: center; color: #aaa; padding-top: 50px">
   Made with love by
-  <a href="https://curvenote.com" target="_blank" style="color: #aaa">
-    <img src="https://cdn.curvenote.com/brand/logo-blue-icon.png" style="height: 1em" /> Curvenote
+  <a href="https://continuous.foundation" target="_blank" style="color: #aaa">
+    Continuous Science Foundation <img src="https://continuous.foundation/images/logo-small.svg" style="height: 1em" />
   </a>
 </p>

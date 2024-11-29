@@ -3,8 +3,8 @@
   "version": "1.0.2",
   "license": "MIT",
   "description": "Read and write intersphinx objects.inv files",
-  "author": "Rowan Cockett <rowan@curvenote.com>",
-  "homepage": "https://github.com/curvenote/intersphinx",
+  "author": "Rowan Cockett <rowan@continuous.foundation>",
+  "homepage": "https://github.com/continuous-foundation/intersphinx",
   "sideEffects": false,
   "type": "module",
   "exports": "./dist/index.js",
@@ -23,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/curvenote/intersphinx.git"
+    "url": "git+https://github.com/continuous-foundation/intersphinx.git"
   },
   "bin": "./dist/intersphinx.cjs",
   "scripts": {
@@ -44,13 +44,13 @@
     "publish": "npm run build && npm run test && changeset publish && git push --follow-tags"
   },
   "bugs": {
-    "url": "https://github.com/curvenote/intersphinx/issues"
+    "url": "https://github.com/continuous-foundation/intersphinx/issues"
   },
   "dependencies": {
     "chalk": "^5.2.0",
     "commander": "^10.0.1",
     "js-yaml": "^4.1.0",
-    "myst-cli-utils": "^1.0.0",
+    "myst-cli-utils": "^2.0.0",
     "node-fetch": "^3.3.1"
   },
   "devDependencies": {
