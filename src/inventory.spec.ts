@@ -22,4 +22,16 @@ describe('Test Inventory', () => {
     expect(entry?.location?.includes('abc.html')).toBe(true);
     expect(entry?.type).toBe('std:doc');
   });
+  test('Python inventory - case sensitive names', async () => {
+    // Python 3.11 includes both `class Match()` and `def match()` as targets
+    const inv = new Inventory({ path: 'https://docs.python.org/3.11' });
+    await inv.load();
+    expect(inv._loaded).toBe(true);
+    const entryClass = inv.getEntry({ name: 're.Match' });
+    expect(entryClass?.location?.endsWith('re.Match')).toBe(true);
+    expect(entryClass?.type).toBe('py:class');
+    const entryFunc = inv.getEntry({ name: 're.match' });
+    expect(entryFunc?.location?.endsWith('re.match')).toBe(true);
+    expect(entryFunc?.type).toBe('py:function');
+  });
 });

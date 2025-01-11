@@ -2,7 +2,7 @@ import fs from 'fs';
 import zlib from 'zlib';
 import fetch from 'node-fetch';
 import { isUrl } from 'myst-cli-utils';
-import type { Domains } from './types.js';
+import { Domains } from './types.js';
 
 type Entry = { type: string; location: string; display?: string };
 type InventoryItem = { location: string; display?: string };
@@ -132,7 +132,7 @@ export class Inventory {
           // wrong type value. type should be in the form of "{domain}:{objtype}"
           return;
         }
-        if (type === 'py:module' && this.getEntry({ type, name })) {
+        if (type === Domains.pyModule && this.getEntry({ type, name })) {
           // due to a bug in 1.1 and below,
           // two inventory entries are created
           // for Python modules, and the first
@@ -153,8 +153,12 @@ export class Inventory {
     }
     if (resolvedLocation.endsWith('$')) {
       // Maybe move this to the parse function only?
-      resolvedLocation =
-        resolvedLocation.slice(0, -1) + entry.name.toLowerCase().replace(/\s+/g, '-');
+      let name = entry.name;
+      if (entry.type == Domains.stdLabel || entry.type == Domains.stdTerm) {
+        name = entry.name.toLocaleLowerCase().replace(/\s+/g, '-');
+      }
+
+      resolvedLocation = resolvedLocation.slice(0, -1) + name;
     }
     const resolvedDisplay =
       !entry.display || entry.display.trim() === '-' ? undefined : entry.display.trim();
