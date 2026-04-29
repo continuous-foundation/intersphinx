@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "license": "MIT",
   "description": "Read and write intersphinx objects.inv files",
-  "author": "Rowan Cockett <rowan@continuous.foundation>",
+  "author": "Rowan Cockett <rowan@continuousfoundation.org>",
   "homepage": "https://github.com/continuous-foundation/intersphinx",
   "sideEffects": false,
   "type": "module",
