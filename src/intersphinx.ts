@@ -152,9 +152,11 @@ export class Inventory {
       resolvedLocation = resolvedLocation.slice(1);
     }
     if (resolvedLocation.endsWith('$')) {
-      // Maybe move this to the parse function only?
-      resolvedLocation =
-        resolvedLocation.slice(0, -1) + entry.name.toLowerCase().replace(/\s+/g, '-');
+      // Sphinx semantics: `$` is replaced by the object name *verbatim*.
+      // Case must be preserved: e.g. `re.match` (function) and `re.Match`
+      // (class) are distinct objects with distinct anchors.
+      // https://github.com/sphinx-doc/sphinx/blob/v8.2.3/sphinx/util/inventory.py#L154
+      resolvedLocation = resolvedLocation.slice(0, -1) + entry.name;
     }
     const resolvedDisplay =
       !entry.display || entry.display.trim() === '-' ? undefined : entry.display.trim();
