@@ -37,10 +37,8 @@ export async function searchInvFile(
       opts?.domain &&
       !(
         // exact match or first part matches
-        (
-          domainName === opts.domain ||
-          (!opts.domain.includes(':') && domainName.split(':')[0] === opts.domain)
-        )
+        domainName === opts.domain ||
+        (!opts.domain.includes(':') && domainName.split(':')[0] === opts.domain)
       )
     ) {
       return;

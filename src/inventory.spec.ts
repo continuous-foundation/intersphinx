@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'bun:test';
 import { Inventory } from './intersphinx';
 
 describe('Test Inventory', () => {
