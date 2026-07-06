@@ -1,5 +1,15 @@
 # intersphinx
 
+## 1.1.0
+
+### Minor Changes
+
+- 3a93ee4: Upgraded tooling to use Bun as the package manager and test runner.
+
+### Patch Changes
+
+- 2ab7172: Expand the `$` uri anchor shorthand with the object name verbatim (case-preserved), matching Sphinx semantics. Previously the expansion was lowercased and whitespace-replaced, which broke links to any case-distinct targets (e.g. `re.Match` vs `re.match` in the CPython inventory, and capitalized glossary terms like `#term-Match`).
+
 ## 0.0.8
 
 ### Patch Changes
