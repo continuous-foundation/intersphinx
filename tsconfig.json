@@ -3,6 +3,7 @@
     "composite": false,
     "declaration": false,
     "declarationMap": true,
+    "rootDir": "./src",
     "target": "ES2019",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -24,6 +25,6 @@
       "../../../node_modules/@types"
     ]
   },
-  "include": ["."],
+  "include": ["src"],
   "exclude": ["dist", "build", "node_modules", "src/**/*.spec.ts", "tests"]
 }

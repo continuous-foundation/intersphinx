@@ -62,6 +62,25 @@ inv.setEntry({
 inv.write('objects.inv');
 ```
 
+## Development
+
+This project uses [Bun](https://bun.sh) as its package manager and test runner.
+
+```bash
+# Install dependencies
+bun install
+
+# Build the library and CLI
+bun run build
+
+# Run the test suite (powered by `bun test`)
+bun test
+
+# Lint and check formatting
+bun run lint
+bun run lint:format
+```
+
 ---
 
 As of v1.0.0 this package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).

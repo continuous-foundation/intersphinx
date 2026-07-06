@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write # create the Version Packages PR / push tags
+  pull-requests: write # open/update the Version Packages PR
+  id-token: write # npm trusted publishing (OIDC) + provenance
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.10
+
+      # Node provides the npm client changesets publishes with.
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+
+      # npm trusted publishing needs npm >= 11.5.1 (Node 22 ships an older npm).
+      # OIDC exchange replaces a long-lived token, and provenance is automatic.
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # `version` opens/updates the "Version Packages" PR when changesets exist;
+      # `publish` (bun run release → build + changeset publish) runs once that PR
+      # is merged and there are no pending changesets on main. Publishing uses
+      # OIDC trusted publishing — no NPM_TOKEN, just `id-token: write` above.
+      - name: Create Release PR or publish
+        uses: changesets/action@v1
+        with:
+          version: bun run version
+          publish: bun run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

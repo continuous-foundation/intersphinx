@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import fs from 'fs';
 import { extname } from 'path';
-import yaml from 'js-yaml';
+import { dump } from 'js-yaml';
 import { clirun, getSession, tic } from 'myst-cli-utils';
 import type { ISession } from 'myst-cli-utils';
 import { Inventory } from '../intersphinx.js';
@@ -12,13 +12,13 @@ export async function parseInvFile(session: ISession, path: string, output?: str
   await inv.load();
   session.log.debug(toc('Inventory loaded in %s'));
   if (!output) {
-    session.log.info(yaml.dump(inv.data));
+    session.log.info(dump(inv.data));
     return;
   }
   switch (extname(output)) {
     case '.yaml':
     case '.yml': {
-      const data = yaml.dump(inv.data);
+      const data = dump(inv.data);
       fs.writeFileSync(output, data);
       return;
     }
